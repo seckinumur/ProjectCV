@@ -1,0 +1,94 @@
+﻿@model Entitiy.Model.User
+@{
+    ViewBag.Title = "Admin";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Profil</h1>
+            </div>
+            <form method="post" role="form" enctype="multipart/form-data">
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Ad Soyad</label>
+                    <input class="form-control" name="AdSoyad" value="@Model.AdSoyad" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Meslek</label>
+                    <input class="form-control" name="Meslek" value="@Model.Meslek" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Doğum Günü</label>
+                    <div class="col-10">
+                        <input class="form-control" value="@Model.DogumTarihi" name="DogumGunu" required>
+                    </div>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Yabancı Dil</label>
+                    <input class="form-control" name="email" value="@Model.YabanciDil" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-primary">Beceriler</label>
+                    <input class="form-control" name="Beceriler" value="@Model.Beceriler" required>
+                </div>
+
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Telefon</label>
+                    <input class="form-control" name="Telefon" value="@Model.Telefon" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">E-Mail</label>
+                    <input class="form-control" name="email" value="@Model.email" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Web Site</label>
+                    <input class="form-control" name="website" value="@Model.website" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Twitter</label>
+                    <input class="form-control" name="twitter" value="@Model.twitter" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Facebook</label>
+                    <input class="form-control" name="facebook" value="@Model.facebook" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Github</label>
+                    <input class="form-control" name="github" value="@Model.github" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Linken</label>
+                    <input class="form-control" name="linken" value="@Model.linken" required>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="@Model.Resim">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Profil Resmi Değiştir</span><span class="fileinput-exists">Değiştir</span>
+                                <input id="input-image-file" type="file" name="Resim" required>
+                            </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Sil</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Şifre</label>
+                    <input class="form-control" name="linken" value="@Model.Sifre" required>
+                </div>
+
+                <div class="col-md-3 form-group">
+                    <label class="text-primary">Profili Kaydet</label>
+                    <button class="form-control btn btn-success" type="submit">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
