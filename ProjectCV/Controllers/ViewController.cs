@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace ProjectCV.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var gonder = UserRepo.UserFindView();
+            return View(gonder);
         }
     }
 }

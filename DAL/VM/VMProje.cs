@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entitiy.Model
+namespace DAL.VM
 {
-   public class ProjelerDeneyimler
+   public class VMProje
     {
         public int ProjelerDeneyimlerID { get; set; }
         public string ProjeAdi { get; set; }
@@ -14,8 +14,7 @@ namespace Entitiy.Model
         public string Aciklama { get; set; }
         public string Link { get; set; }
         public string Tarih { get; set; }
+        public string Komut { get; set; }
         public int UserID { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

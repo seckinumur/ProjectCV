@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,15 @@ namespace ProjectCV.Controllers
 {
     public class CVController : Controller
     {
-        // GET: CV
         public ActionResult Index()
         {
-            return View();
+            var gonder = UserRepo.UserFindView();
+            return View(gonder);
+        }
+        public ActionResult CV(int id)
+        {
+            var gonder = UserRepo.UserFindCV(id);
+            return View(gonder);
         }
     }
 }

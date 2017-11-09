@@ -1,6 +1,6 @@
 ﻿@model Entitiy.Model.User
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Personel Control Systems V.1.5 / Admin Sayfası";
 }
 
 <div id="page-wrapper">
@@ -14,6 +14,7 @@
                 <div class="col-md-3 form-group">
                     <label class="text-primary">Ad Soyad</label>
                     <input class="form-control" name="AdSoyad" value="@Model.AdSoyad" required>
+                    <input name="UserID" value="@Model.UserID" hidden="hidden">
                 </div>
                 <div class="col-md-3 form-group">
                     <label class="text-primary">Meslek</label>
@@ -22,12 +23,12 @@
                 <div class="col-md-3 form-group">
                     <label class="text-primary">Doğum Günü</label>
                     <div class="col-10">
-                        <input class="form-control" value="@Model.DogumTarihi" name="DogumGunu" required>
+                        <input class="form-control" value="@Model.DogumTarihi" name="DogumTarihi" required>
                     </div>
                 </div>
                 <div class="col-md-3 form-group">
-                    <label class="text-primary">Yabancı Dil</label>
-                    <input class="form-control" name="email" value="@Model.YabanciDil" required>
+                    <label class="text-primary">Diller</label>
+                    <input class="form-control" name="Diller" value="@Model.Diller" required>
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="text-primary">Beceriler</label>
@@ -64,15 +65,16 @@
                 </div>
 
                 <div class="form-group col-md-3">
+                    <input hidden="hidden" name="Resim" value="@Model.Resim">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                        <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
                             <img src="@Model.Resim">
                         </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
                         <div>
                             <span class="btn btn-default btn-file">
                                 <span class="fileinput-new">Profil Resmi Değiştir</span><span class="fileinput-exists">Değiştir</span>
-                                <input id="input-image-file" type="file" name="Resim" required>
+                                <input id="input-image-file" type="file" name="image" required>
                             </span>
                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Sil</a>
                         </div>
@@ -81,7 +83,7 @@
 
                 <div class="col-md-3 form-group">
                     <label class="text-primary">Şifre</label>
-                    <input class="form-control" name="linken" value="@Model.Sifre" required>
+                    <input class="form-control" name="Sifre" value="@Model.Sifre" required>
                 </div>
 
                 <div class="col-md-3 form-group">

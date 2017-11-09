@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\Adminss.css" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -104,8 +105,11 @@
     <Content Include="Content\css\form-elements.css" />
     <Content Include="Content\css\jasny-bootstrap.min.css" />
     <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\materialize.min.css" />
     <Content Include="Content\css\metisMenu.min.css" />
+    <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\sb-admin-2.min.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -136,34 +140,28 @@
     <Content Include="Content\perfect-scrollbar\css\perfect-scrollbar.min.css" />
     <Content Include="Content\perfect-scrollbar\js\min\perfect-scrollbar.jquery.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="img\avatar.png" />
     <Content Include="img\b2b.jpg" />
+    <Content Include="img\Backup\seckinumur.jpg" />
     <Content Include="img\bg-btn.png" />
     <Content Include="img\bg-card2.png" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\bgmask2.html" />
     <Content Include="img\blog1.jpg" />
-    <Content Include="img\blog2.jpg" />
-    <Content Include="img\blog3.jpg" />
-    <Content Include="img\blog4.jpg" />
-    <Content Include="img\blog5.jpg" />
     <Content Include="img\choicecorporation.png" />
     <Content Include="img\favicon.png" />
     <Content Include="img\hr1.png" />
     <Content Include="img\logo.png" />
-    <Content Include="img\profile.jpg" />
-    <Content Include="img\profile2.jpg" />
     <Content Include="img\projects.html" />
     <Content Include="img\projects2.html" />
     <Content Include="img\qrseckin.png" />
-    <Content Include="img\team1.jpg" />
-    <Content Include="img\team2.jpg" />
-    <Content Include="img\team3.jpg" />
+    <Content Include="img\User\seckinumur.jpg" />
     <Content Include="img\yardimciyayin.png" />
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap-theme.css.map" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-notify.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -217,6 +215,8 @@
     <Content Include="Scripts\creative.js" />
     <Content Include="Scripts\cross-browser.js" />
     <Content Include="Scripts\holder.js" />
+    <Content Include="Scripts\html2canvas.min.js" />
+    <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jasny-bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -225,12 +225,21 @@
     <Content Include="Scripts\jquery.backstretch.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jspdf.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\masonry.pkgd.js" />
+    <Content Include="Scripts\materialize.min.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\pdfFromHTML.js" />
+    <Content Include="Scripts\print.min.js" />
+    <Content Include="Scripts\qrcode.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\scrollreveal.min.js" />
+    <Content Include="Scripts\styleswitcher.js" />
     <Content Include="Scripts\validate.js" />
+    <Content Include="Scripts\validator.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +262,12 @@
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\CV\Index.cshtml" />
+    <Content Include="Views\Admin\Proje.cshtml" />
+    <Content Include="Views\Admin\IsDeneyimi.cshtml" />
+    <Content Include="Views\Admin\Egitim.cshtml" />
+    <Content Include="Views\CV\CV.cshtml" />
+    <Content Include="Views\Admin\AdminKontrol.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -262,9 +277,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\User\" />
+    <Folder Include="img\Work\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\CV\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

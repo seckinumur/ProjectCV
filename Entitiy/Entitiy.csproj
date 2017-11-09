@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\PCDB.cs" />
-    <Compile Include="Model\Blog.cs" />
     <Compile Include="Model\Egitim.cs" />
+    <Compile Include="Model\IsDeneyimleri.cs" />
     <Compile Include="Model\ProjelerDeneyimler.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

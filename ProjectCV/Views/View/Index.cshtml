@@ -1,4 +1,4 @@
-﻿
+﻿@model DAL.VM.VMUser
 @{
     Layout = null;
 }
@@ -45,7 +45,7 @@
             <div class="loader-name" id="loader-name">
                 Seçkin <strong>UMUR</strong>
             </div>
-            <p class="loader-job" id="loader-job">Software Developer & Web Developer</p>
+            <p class="loader-job" id="loader-job">@Model.Meslek</p>
         </div>
     </div>
 
@@ -56,9 +56,8 @@
             <div class="main-menu" id="main-menu">
                 <ul class="main-menu-list">
                     <li><a href="#page-resume" class="link-home">Anasayfa</a></li>
-                    <li><a href="#page-resume" class="link-page">Kısa CV</a></li>
-                    <li><a href="#page-proje" class="link-page">Projeler</a></li>
-                    <li><a href="#page-blog" class="link-page">Blog</a></li>
+                    <li><a href="#page-resume" class="link-page">Seçkin UMUR CV</a></li>
+                    <li><a href="#page-CVHazirla" class="link-page">CV Hazırla!</a></li>
                     <li><a href="#page-contact" class="link-page">İletişim</a></li>
                     <li><a href="~/Admin/Login">Sisteme Giriş</a></li>
                 </ul>
@@ -66,18 +65,18 @@
 
             <div class="section-vcardbody section-home" id="section-home">
                 <div class="vcard-profile-pic">
-                    <img src="~/img/profile2.jpg" id="profile2" alt="" />
-                    <img src="~/img/profile.jpg" id="profile1" class="profileActive" alt="" />
+                    <img src="@Model.Resim" id="profile2" alt="" />
+                    <img src="@Model.Resim" id="profile1" class="profileActive" alt="" />
                 </div>
                 <div class="vcard-profile-description">
-                    <h1 class="profile-title"><span class="color1">Seçkin UMUR</span></h1>
-                    <h2 class="profile-subtitle">Software Developer & Web Developer</h2>
+                    <h1 class="profile-title"><span class="color1">@Model.AdSoyad</span></h1>
+                    <h2 class="profile-subtitle">@Model.Meslek</h2>
                     <hr class="hr1">
-                    <p>ASP.NET MVC, C# Windows Form, HTML5, CSS3, Javascript, Bootsrap, JQuery, Arduino, Raspberry Pi, Microsoft Azure, MS SQL, CorelDraw, Adobe Photoshop, Adobe Illustrator</p>
+                    <p>@Model.Beceriler</p>
                     <div class="vcard-profile-description-feature">
                         <div class="vcard-profile-description-ft-item">
-                            <p><a class="text-danger" href="tel:+905423428009">+905423428009</a> - <a class="text-danger" href="mailto:seckinumur@gmail.com">seckinumur@gmail.com</a></p>
-                            <p><a class="text-danger" href="https://www.seckinumur.com">www.seckinumur.com</a></p>
+                            <p><a class="text-danger" href="tel:@Model.Telefon">@Model.Telefon</a> - <a class="text-danger" href="mailto:@Model.email">@Model.email</a></p>
+                            <p><a class="text-danger" href="@Model.website">@Model.website</a></p>
                         </div>
                     </div>
                 </div>
@@ -87,107 +86,118 @@
             <div class="section-vcardbody section-page" id="page-resume">
 
                 <div class="section-education">
-                    <h2 class="section-title">Kısa CV</h2>
-                    <h2 class="section-title2"><i class="fa fa-university"></i>&nbsp; Eğitim & Kurs</h2>
+                    <h2 class="section-title">Seçkin UMUR CV</h2>
+                    <div class="resume-buttons header-page-buttons">
+                        <a href="~/CV/Index" class="btn btn-default btn-default2"><i class="fa fa-download"></i>&nbsp; PDF Olarak İndir</a>
+                        <a href="#page-CVHazirla" class="btn btn-default btn-default2 link-page"><i class="fa fa-print"></i>&nbsp; CV Hazırla!</a>
+                    </div>
+                    <h2 class="section-title2"><i class="fa fa-language"></i>&nbsp; Konuşma Dilleri & Programlama Dilleri</h2>
 
                     <div class="resume-item">
-                        <h3 class="section-item-title-1">Graphic Design</h3>
-                        <h4 class="graduation-time">St. Patrick University (2 Years Course) - <span class="graduation-date">Graduation May 2013</span></h4>
-                        <div class="graduation-description">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
+                        <h4 class="section-item-title-1">@Model.Diller</h4>
                     </div>
 
                 </div>
 
                 <div class="section-education">
+                    <h2 class="section-title2"><i class="fa fa-university"></i>&nbsp; Eğitim & Kurs</h2>
+                    @{
+                        foreach (var item in Model.Egitimler)
+                        {
+                            <div class="resume-item">
+                                <h3 class="section-item-title-1">@item.Tanimi</h3>
+                                <h4 class="graduation-time">@item.OkulAdi - <span class="graduation-date">@item.Tarih</span></h4>
+                                <div class="graduation-description">
+                                    <p>@item.YabanciDil</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="section-education">
                     <h2 class="section-title2"><i class="fa fa-flag"></i>&nbsp; İş Deneyimi</h2>
 
-                    <div class="resume-item">
-                        <h3 class="section-item-title-1">DotRex Co.</h3>
-                        <h4 class="job">Lead Designer - <span class="job-date">June 2012 - Current</span></h4>
-                        <div class="graduation-description">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-
+                    @{
+                        foreach (var item in Model.ProjelerDeneyimleri)
+                        {
+                            <div class="resume-item">
+                                <h3 class="section-item-title-1">@item.ProjeAdi</h3>
+                                <h4 class="job">@item.Teknoloji - <span class="job-date"><a href="@item.Link" target="_blank">@item.Link</a></span></h4>
+                                <div class="graduation-description">
+                                    <p>@item.Aciklama</p>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
 
                 <div class="page-footer">
-                    <div class="resume-buttons">
-                        <a href="#" class="btn btn-default btn-default2"><i class="fa fa-download"></i>&nbsp; Download my resume</a>
-                        <a href="#page-contact" class="btn btn-default btn-default2 link-page"><i class="fa fa-download"></i>&nbsp;  Get in Touch</a>
-                    </div>
-                    <p class="footer-quote">"The best way to predict the future is to create it" <br /><i>Peter Drucker</i></p>
+                    <p class="footer-quote">©2017 Choice Corporation All Rights Reserved.</p>
                 </div>
 
             </div>
 
-            <div class="section-vcardbody section-page" id="page-blog">
+            <div class="section-vcardbody section-page" id="page-CVHazirla">
                 <div class="section-blog">
-
-                    <h2 class="section-title">Projeler</h2>
-
+                    <h2 class="section-title">CV HAzırlama Aracı</h2>
+                    <div class="blog-item-title-wrapper"><h2 class="blog-item-title title-border">Nasıl Bir CV Hazırlayabilirim?</h2></div>
                     <div class="blog-posts">
-
+                        
                         <div class="blog-item">
                             <div class="blog-item-wrapper">
-                                <div class="blog-item-thumb">
-                                    <a href="single.html" class="loadPost"><img src="~/img/blog1.jpg" alt=""></a>
-                                </div>
                                 <div class="blog-item-infos">
-                                    <div class="blog-item-title-wrapper">
-                                        <h2 class="blog-item-title title-border"><a href="single.html" class="loadPost">How to succeed in meetings</a></h2>
-                                    </div>
-                                    <div class="blog-item-description">
-                                        <p><a href="single.html" class="loadPost">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales varius sagittis. Proin a arcu vitae turpis congue facilisis. Quisque a lectus pretium, sagittis augue in, fringilla risus....</a></p>
+                                    <div class="blog-item-description text-justify">
+                                        <p>Merhaba! Bu Uygulama Size ONE PAGE CV HAzırlamak İçin Araçlar Sunmaktadır. Sisteme Kayıt Olduktan Sonra Oturum Açtığınızda Kişisel Bilgilerinizi Girip Dinamik Olarak Oluşturabileceğiniz Kolay Bir Arayüz Sunmaktadır. Oluşturduğunuz CV Benzersiz Bir QR Kod İçermektedir. Bu kod qr okuyucularda taratılıp cv nin html5 versiyonuna ulaşılmasına olanak verir. CV Dinamik olarak hazırlanmaktır. Bu araç Ücretsizdir. <strong>Dikkat! Kişisel Bilgilerinizi Vermektesiniz. Bu Uygulama Kişisel Bilgilerinizi Korumakla Sorumlu Değildir. Ancak Hiçbir Zaman Kişisel Bilgilerinizi Reklam Amacıyla Kullanmayacaktır. CV Oluşturarak işbu Sözleşmeyi Kabul Etmiş Sayılırsınız.</strong></p>
                                     </div>
                                     <div class="blog-item-link">
-                                        <a href="single.html" class="btn btn-default loadPost">Detay</a>
+                                        <a href="#" class="btn btn-default loadPost">Haydi Bir CV HAzırlayalım!!</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-
-                </div>
-            </div>
-
-            <div class="section-vcardbody section-page" id="page-proje">
-                <div class="section-blog">
-
-                    <h2 class="section-title">Projeler</h2>
-
-                    <div class="blog-posts">
-
-                        <div class="blog-item">
-                            <div class="blog-item-wrapper">
-                                <div class="blog-item-thumb">
-                                    <a href="single.html" class="loadPost"><img src="~/img/blog1.jpg" alt=""></a>
-                                </div>
-                                <div class="blog-item-infos">
-                                    <div class="blog-item-title-wrapper">
-                                        <h2 class="blog-item-title title-border"><a href="single.html" class="loadPost">How to succeed in meetings</a></h2>
-                                    </div>
-                                    <div class="blog-item-description">
-                                        <p><a href="single.html" class="loadPost">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sodales varius sagittis. Proin a arcu vitae turpis congue facilisis. Quisque a lectus pretium, sagittis augue in, fringilla risus....</a></p>
-                                    </div>
-                                    <div class="blog-item-link">
-                                        <a href="single.html" class="btn btn-default loadPost">Detay</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
                 </div>
             </div>
 
             <div class="section-vcardbody section-page section-page-single" id="page-blog-single">
                 <div class="section-blog-single">
                     <div id="postHere"></div>
+                    <h4 class="contact-subtitle-1"><i class="fa fa-sign-in"></i>&nbsp; Sisteme Kayıt Ol!</h4>
+
+                    <form  method="post" role="form" action="@Url.Action("Login","Admin")" >
+                        <div class="form-group">
+                            <input type="text" name="AdSoyad" tabindex="1" class="form-control" placeholder="Ad Soyad" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" tabindex="1" class="form-control" placeholder="E-Mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="Sifre" tabindex="2" class="form-control" placeholder="Şifre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="Komut" class="btn btn-default form-send" value="Kayit">
+                        </div>
+                    </form>
+
+                    <div class="col-xs-12 form-group">
+                        <img class="img-responsive center-block" width="150" src="~/img/choicecorporation.png" />
+                    </div>
+                    <div class="blog-item-infos">
+                        <div class="blog-item-description text-justify">
+                            <p class="text-danger">İşbu Anlaşma Choice Corp. ve son kullanıcı arasındadır. Kullanıcı sistemi kullanarak anlaşmayı kabul etmiş sayılır.
+                                -Choice Corp Hiçbir Şekilde Kişisel Verilerinizi Reklam Amacıyla Kullanmayacağına Söz Verir.
+                                -Choice Corp Olası Bir Ters Mühendislik HACK Girişimi Sonucunda Kişisel Bilgilerinizin Tutulduğu
+                                Choice Corp Cloud Sunucularında Meydana Gelen Hasar ve veri kaybından Sorumlu Değildir.
+                                -Choice Corp Güvenlik Sistemi Choice Security Services Kişisel Bilgilerinizin Güvenliğinden ve Parolalarınızın 
+                                Güvenliğinden Sorumlu Değildir.
+                                TÜM SORUMLULUK SİZE AİTTİR. SON KULLANICI SİSTEMİ KULLANARAK BU ANLAŞMAYI KABUL ETMİŞ SAYILIR.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 form-group">
+                        <a href="#page-CVHazirla" class="btn btn-default btn-block  link-page">Geri Dön!</a>
+                    </div>
                 </div>
             </div>
 
@@ -226,14 +236,6 @@
         </div>
 
     </section>
-
-    <div class="form-result modal-wrap" id="contactSuccess">
-        <div class="modal-bg"></div>
-        <div class="modal-content">
-            <h4 class="modal-title"><i class="fa fa-check-circle"></i> Success!</h4>
-            <p>Your message has been sent to us.</p>
-        </div>
-    </div>
 
 </body>
 </html>

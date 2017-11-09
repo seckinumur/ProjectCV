@@ -1,0 +1,112 @@
+﻿@model DAL.VM.VMUser
+@{
+    ViewBag.Title = "Personel Control Systems V.1.5 / Proje";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Projeler</h1>
+            </div>
+
+            <h2>Mevcut Projeleriniz Düzenlemek Yada Görmek İçin Tıklayın</h2>
+
+            <div class="panel-group" id="accordion">
+                @{
+                    int sayi = 0;
+                    string yazi = "collapse";
+                    foreach (var item in Model.ProjelerDeneyimleri)
+                    {
+                        yazi= yazi + sayi.ToString();
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#@yazi">@item.ProjeAdi</a><a href="~/Admin/ProjeSil/@item.ProjelerDeneyimlerID" class="pull-right"><i class=" fa fa-trash fa-1x text-danger"></i> Projeyi Sil</a>
+                                </h4>
+                            </div>
+                            <div id="@yazi" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <form method="post" role="form">
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Proje Adı</label>
+                                            <input class="form-control" name="ProjeAdi" value="@item.ProjeAdi" required>
+                                            <input name="ProjelerDeneyimlerID" value="@item.ProjelerDeneyimlerID" hidden="hidden">
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Teknolojileri</label>
+                                            <input class="form-control" name="Teknoloji" value="@item.Teknoloji" required>
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Link</label>
+                                            <input class="form-control" name="Link" value="@item.Link" required>
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Tarih</label>
+                                            <input class="form-control" name="Tarih" value="@item.Tarih" required>
+                                        </div>
+                                        <div class="col-md-10 form-group">
+                                            <label class="text-primary">Açıklama</label>
+                                            <input class="form-control" name="Aciklama" value="@item.Aciklama" required>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="text-primary">Güncelle</label>
+                                            <button class="form-control btn btn-success" name="Komut" value="Guncelle" type="submit">Kaydet</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        sayi++;
+                    }
+                }
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Ekle">Yeni Proje Ekle</a>
+                        </h4>
+                    </div>
+                    <div id="Ekle" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form method="post" role="form">
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Proje Adı</label>
+                                    <input class="form-control" name="ProjeAdi"  required>
+                                    <input name="UserID" value="@Model.UserID"  hidden="hidden">
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Teknolojileri</label>
+                                    <input class="form-control" name="Teknoloji" required>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Link</label>
+                                    <input class="form-control" name="Link" required>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Tarih</label>
+                                    <input class="form-control" name="Tarih" required>
+                                </div>
+                                <div class="col-md-10 form-group">
+                                    <label class="text-primary">Açıklama</label>
+                                    <input class="form-control" name="Aciklama" required>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label class="text-primary">Kaydet</label>
+                                    <button class="form-control btn btn-success" name="Komut" value="Kaydet" type="submit">Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
+    </div>
+</div>

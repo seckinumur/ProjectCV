@@ -1,0 +1,96 @@
+﻿@model DAL.VM.VMUser
+@{
+    ViewBag.Title = "Personel Control Systems V.1.5 / Eğitim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Eğitim Kurs</h1>
+            </div>
+
+            <h2>Mevcut Eğitim ve Kurslarınızı Düzenlemek Yada Görmek İçin Tıklayın</h2>
+
+            <div class="panel-group" id="accordion">
+                @{
+                    int sayi = 0;
+                    string yazi = "collapse";
+                    foreach (var item in Model.Egitimler)
+                    {
+                        yazi = yazi + sayi.ToString();
+
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#@yazi">@item.OkulAdi</a><a href="~/Admin/EgitimSil/@item.EgitimID" class="pull-right"><i class=" fa fa-trash fa-1x text-danger"></i> Eğitimi Sil</a>
+                                </h4>
+                            </div>
+                            <div id="@yazi" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <form method="post" role="form">
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Okul Adı</label>
+                                            <input class="form-control" name="OkulAdi" value="@item.OkulAdi" required>
+                                            <input name="EgitimID" value="@item.EgitimID" hidden="hidden">
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label class="text-primary">Tarih</label>
+                                            <input class="form-control" name="Tarih" value="@item.Tarih" required>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label class="text-primary">Tanımı</label>
+                                            <input class="form-control" name="Tanimi" value="@item.Tanimi" required>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="text-primary">Güncelle</label>
+                                            <button class="form-control btn btn-success pull-right" name="Komut" value="Guncelle" type="submit">Kaydet</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        sayi++;
+                    }
+                }
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Ekle">Yeni Eğitim Kurs Ekle</a>
+                        </h4>
+                    </div>
+                    <div id="Ekle" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <form method="post" role="form">
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Okul Adı</label>
+                                    <input class="form-control" name="OkulAdi" required>
+                                    <input name="UserID" value="@Model.UserID" hidden="hidden">
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label class="text-primary">Tarih</label>
+                                    <input class="form-control" name="Tarih" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="text-primary">Tanımı</label>
+                                    <input class="form-control" name="Tanimi" required>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <label class="text-primary">Kaydet</label>
+                                    <button class="form-control btn btn-success pull-right" name="Komut" value="Kaydet" type="submit">Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Entitiy.Model
 {
-    public class Egitim
+    public class IsDeneyimleri
     {
-        public int EgitimID { get; set; }
-        public string OkulAdi { get; set; }
+        public int IsDeneyimleriID { get; set; }
+        public string Sirket { get; set; }
+        public string Aciklama { get; set; }
         public string Tarih { get; set; }
-        public string Tanimi { get; set; }
-        public string YabanciDil { get; set; }
         public int UserID { get; set; }
 
         public virtual User User { get; set; }

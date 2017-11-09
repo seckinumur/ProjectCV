@@ -48,8 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\EgitimRepo.cs" />
+    <Compile Include="Repo\IsRepo.cs" />
     <Compile Include="Repo\LoginRepo.cs" />
+    <Compile Include="Repo\ProjeRepo.cs" />
+    <Compile Include="Repo\ResetRepo.cs" />
+    <Compile Include="Repo\UserRepo.cs" />
+    <Compile Include="VM\VMEgitim.cs" />
+    <Compile Include="VM\VMIs.cs" />
     <Compile Include="VM\VMLogin.cs" />
+    <Compile Include="VM\VMProje.cs" />
     <Compile Include="VM\VMUser.cs" />
   </ItemGroup>
   <ItemGroup>
